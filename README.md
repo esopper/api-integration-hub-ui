@@ -1,59 +1,112 @@
-# ApiIntegrationHubUi
+# API Integration Hub (UI) — WIP
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.0.3.
+Angular frontend for my API Integration Hub portfolio project.  
+The goal of this project is to demonstrate clean client-side architecture, integration with a backend aggregation service, and practical Angular patterns in a real-world-style application.
 
-## Development server
+> **Status:** Work in progress. Routes, request parameters, and UI flows are evolving as the backend API stabilizes.
 
-To start a local development server, run:
+---
+
+## What it does
+
+This Angular app:
+
+- Calls a backend integrations API
+- Displays normalized data from external services
+- Demonstrates separation of concerns using Angular services and models
+- Handles loading states and error responses from upstream APIs
+
+### Current Integrations
+
+- **GitHub Repository Search**
+  - Search repositories
+  - Sort and paginate results
+- **Weather Lookup**
+  - Fetch weather data (via backend proxy)
+
+---
+
+## Tech Stack
+
+- Angular
+- TypeScript
+- RxJS
+- Angular HttpClient
+- CSS (default Angular styling, minimal UI framework)
+
+---
+
+## Project Structure (High-Level)
+
+- `src/app/services` — API service classes for backend communication
+- `src/app/models` — Typed request/response models
+- `src/app/components` — UI components for each integration
+- `src/environments` — (Planned) environment-specific configuration
+
+---
+
+## Running locally
+
+### Prerequisites
+- Node.js (LTS recommended)
+- npm
+
+### Install dependencies
 
 ```bash
-ng serve
+npm install
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+### Start development server
 
 ```bash
-ng generate component component-name
+npm start
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+The app runs by default at:
 
-```bash
-ng generate --help
+```
+http://localhost:4200
 ```
 
-## Building
+The backend is expected to be running locally at:
 
-To build the project run:
-
-```bash
-ng build
+```
+http://localhost:8080
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+---
 
-## Running unit tests
+## Configuration (WIP)
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+Currently, backend API URLs are defined directly inside Angular services.
 
-```bash
-ng test
-```
+Planned improvements:
+- Move API base URL to Angular environment configuration
+- Add support for multiple environments (dev, prod)
+- Improve error and loading UX states
 
-## Running end-to-end tests
+---
 
-For end-to-end (e2e) testing, run:
+## Roadmap (Portfolio Goals)
 
-```bash
-ng e2e
-```
+- Align request contracts with backend DTOs
+- Improve pagination and sorting UX
+- Add stronger form validation
+- Add basic component tests
+- Add CI checks (lint + build validation)
+- Improve UI styling for clearer data presentation
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+---
 
-## Additional Resources
+## Security Notes
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- No secrets are stored in this repository.
+- All external API credentials are managed by the backend service.
+- The frontend only communicates with the backend API.
+
+---
+
+## License
+
+MIT (or your preferred license)

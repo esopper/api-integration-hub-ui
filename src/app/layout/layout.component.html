@@ -1,0 +1,20 @@
+<header>
+    <nav>
+        <mat-toolbar class="toolbar">
+            <button matButton (click)="goToGitHub()">
+                <mat-icon>code</mat-icon>GitHub
+            </button>
+            <button matButton (click)="goToWeather()">
+                <mat-icon>sunny</mat-icon>Weather
+            </button>
+            <span class="spacer"></span>
+            <button matButton (click)="goToSource()">
+                <mat-icon>commit</mat-icon>See Source
+            </button>
+        </mat-toolbar>
+    </nav>
+</header>
+
+<main class="content">
+    <router-outlet></router-outlet>
+</main>
