@@ -22,6 +22,6 @@ export class LayoutComponent {
     }
 
     goToSource() {
-      window.open('https://github.com/your-username/api-integration-hub', '_blank');
+      window.open('https://github.com/esopper/api-integration-hub', '_blank');
     }
 }
