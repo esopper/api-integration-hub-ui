@@ -3,7 +3,7 @@ import { inject, Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { ApiResponse } from '../models/api-response.model';
 import { WeatherResponse } from '../models/weather-response.model';
-import { GeocodedLocation } from '../models/loc.model';
+import { GeocodedLocation } from '../models/geocoded-location.model';
 
 @Injectable({
   providedIn: 'root'

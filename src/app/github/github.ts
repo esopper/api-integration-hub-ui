@@ -7,8 +7,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { MatTableDataSource, MatTableModule } from '@angular/material/table';
-import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginator, MatPaginatorModule, PageEvent } from '@angular/material/paginator';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-github',
@@ -16,42 +17,81 @@ import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
   templateUrl: './github.html',
   styleUrl: './github.scss'
 })
-export class Github implements AfterViewInit {
+export class Github {
+  // Search
+  term = '';
 
-  username = '';
-  repos: Repo[] | null = null;
+  // Table
+  repos: Repo[] = [];
+  repoFields: string[] = ['name', 'stars', 'language'];
+
+  // Pagination
+  total = 0;
+  pageIndex = 0;
+  pageSize = 10;
+
+  // UI state
+  loading = false;
   error: string | null = null;
-  repoFields: string[] = ['name', 'stargazers', 'language'];
-  dataSource = new MatTableDataSource<Repo>([]);
+  hasSearched = false;
+
+  @ViewChild(MatPaginator) paginator?: MatPaginator;
+
+  private readonly destroy$ = new Subject<void>();
 
   constructor(private gitHubService: GithubService) {}
 
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
-
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
+  get showEmptyState(): boolean {
+    return this.hasSearched && !this.loading && !this.error && this.repos.length === 0;
   }
 
-
   fetchRepos() {
-    this.repos = null;
+    if(!this.term) {
+      return;
+    }
+    this.hasSearched = true;
+    this.pageIndex = 0;
+
+    if(this.paginator) {
+      this.paginator.firstPage();
+    }
+
+    this.loadPage();
+  }
+
+  private loadPage() {
+    this.loading = true;
     this.error = null;
 
-    this.gitHubService.getRepos(this.username).subscribe({
-      next: (response) => {
-        if(response.success) {
-          this.repos = response.data;
-          this.dataSource.data = this.repos;
-          this.dataSource._updateChangeSubscription();
-          this.error = null;
+    this.gitHubService
+      .searchRepos(this.term, this.pageIndex, this.pageSize)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe({
+        next: (res) => {
+          if(!res.success || !res.data) {
+            this.repos = [];
+            this.total = 0;
+            this.error = res.message || 'Unexpected error';
+            this.loading = false;
+            return;
+          }
+
+          this.repos = res.data.items;
+          this.total = res.data.total;
+          this.loading = false;
+        },
+        error: (err) => {
+          this.repos = [];
+          this.total = 0;
+          this.error = err?.error?.message || 'Request failed';
+          this.loading = false;
         }
-        else {
-          this.error = response.message || 'Unexpected error';
-        }
-      },
-      error: (response) => {
-        this.error = response.error?.message || 'Request failed';
-      }
-    })
+      });
+  }
+
+  onPage(event: PageEvent) {
+    this.pageIndex = event.pageIndex;
+    this.pageSize = event.pageSize;
+    this.loadPage();
   }
 }

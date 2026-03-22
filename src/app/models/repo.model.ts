@@ -1,5 +1,7 @@
 export interface Repo {
     name: string;
-    stargazersCount: number;
-    language: string;
+    description: string | null;
+    htmlUrl: string;
+    stars: number;
+    language: string | null;
 }

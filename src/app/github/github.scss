@@ -1,0 +1,10 @@
+.status { margin-top: 12px; }
+.error { margin-top: 12px; }
+.muted { opacity: 0.75; font-size: 0.9em; }
+table { width: 100%; margin-top: 12px; }
+.description {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+}

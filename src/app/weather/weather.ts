@@ -11,8 +11,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatTableModule } from '@angular/material/table';
 import { UnixDatePipe } from "../services/unix-date.pipe";
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import { GeocodedLocation } from '../models/loc.model';
 import { debounceTime, distinctUntilChanged, Subject } from 'rxjs';
+import { GeocodedLocation } from '../models/geocoded-location.model';
 
 @Component({
   selector: 'app-weather',
@@ -85,7 +85,7 @@ export class Weather implements OnInit {
     this.weatherService.getWeather(locToUse.lat, locToUse.lon).subscribe({
       next: (response) => {
         if(response.success) {
-          this.weatherData = response.data ?? [];
+          this.weatherData = response.data;
           this.error = null;
         }
         else {
