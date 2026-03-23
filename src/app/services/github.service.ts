@@ -4,13 +4,14 @@ import { map, Observable } from 'rxjs';
 import { ApiResponse } from '../models/api-response.model';
 import { Repo } from '../models/repo.model';
 import { PageResponse } from '../models/page-response.model';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GithubService {
 
-  private apiUrl = 'http://localhost:8080/api/github/repos/search';
+  private apiUrl = `${environment.apiBaseUrl}/api/github/repos/search`;
   private http = inject(HttpClient);
 
   searchRepos(
