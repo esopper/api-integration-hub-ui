@@ -1,4 +1,4 @@
 export const environment = {
     production: true,
-    apiBaseUrl: 'http://BACKEND-URL-PLACEHOLDER'
+    apiBaseUrl: 'https://api.eriksopper.com'
 }
