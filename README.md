@@ -1,75 +1,137 @@
-# API Integration Hub (UI) — WIP
+# API Integration Hub UI
 
-Angular frontend for my API Integration Hub portfolio project.  
-The goal of this project is to demonstrate clean client-side architecture, integration with a backend aggregation service, and practical Angular patterns in a real-world-style application.
+Angular frontend for my API Integration Hub portfolio project.
 
-> **Status:** Work in progress. Routes, request parameters, and UI flows are evolving as the backend API stabilizes.
+This application serves two purposes:
 
----
+1. It is a working client for integration-focused backend features.
+2. It is Erik Sopper's public portfolio site itself at `eriksopper.com`.
 
-## What it does
-
-This Angular app:
-
-- Calls a backend integrations API
-- Displays normalized data from external services
-- Demonstrates separation of concerns using Angular services and models
-- Handles loading states and error responses from upstream APIs
-
-### Current Integrations
-
-- **GitHub Repository Search**
-  - Search repositories
-  - Sort and paginate results
-- **Weather Lookup**
-  - Fetch weather data (via backend proxy)
+The goal is to demonstrate practical frontend engineering, clean integration with a backend aggregation service, and real deployment decisions in AWS.
 
 ---
 
-## Tech Stack
+## What this project demonstrates
 
-- Angular
-- TypeScript
-- RxJS
-- Angular HttpClient
-- CSS (default Angular styling, minimal UI framework)
+* Angular application structure organized around features, services, and models
+* Typed communication with a backend API
+* Separation between UI concerns and third-party API concerns
+* Route-based navigation for independent integration features
+* Environment-based configuration for local and deployed targets
+* AWS-hosted frontend deployment through Amplify
 
 ---
 
-## Project Structure (High-Level)
+## Current features
 
-- `src/app/services` — API service classes for backend communication
-- `src/app/models` — Typed request/response models
-- `src/app/components` — UI components for each integration
-- `src/environments` — (Planned) environment-specific configuration
+### Home / Portfolio Splash Page
+
+A landing page that explains:
+
+* what the project is
+* what it currently demonstrates
+* how it is hosted
+* where the project is heading next
+
+### GitHub Repository Search
+
+Demonstrates:
+
+* backend-driven API integration
+* search inputs and result presentation
+* pagination and sorting flows
+* normalized response handling
+
+### Weather Lookup
+
+Demonstrates:
+
+* backend-mediated third-party API access
+* location lookup and weather retrieval
+* presenting structured forecast data in the UI
+
+---
+
+## Tech stack
+
+* Angular
+* TypeScript
+* RxJS
+* Angular Material
+* Angular Router
+* Angular HttpClient
+* SCSS
+
+---
+
+## Project structure
+
+* `src/app/layout` — shared application layout and top navigation
+* `src/app/home` — portfolio landing page
+* `src/app/github` — GitHub integration UI
+* `src/app/weather` — weather integration UI
+* `src/app/services` — backend API communication
+* `src/app/models` — typed request/response models
+* `src/environments` — environment-specific configuration
+
+---
+
+## Environment configuration
+
+The application uses Angular environment files for backend API configuration.
+
+### Local development
+
+`src/environments/environment.ts`
+
+```ts
+export const environment = {
+  production: false,
+  apiBaseUrl: 'http://localhost:8080'
+};
+```
+
+### Production
+
+`src/environments/environment.prod.ts`
+
+```ts
+export const environment = {
+  production: true,
+  apiBaseUrl: 'https://api.eriksopper.com'
+};
+```
+
+This keeps deployment-specific API URLs out of individual service implementations.
 
 ---
 
 ## Running locally
 
 ### Prerequisites
-- Node.js (LTS recommended)
-- npm
+
+* Node.js 20
+* npm
 
 ### Install dependencies
 
 ```bash
-npm install
+npm ci
 ```
 
-### Start development server
+### Start the dev server
 
 ```bash
 npm start
 ```
 
-The app runs by default at:
+The Angular app runs at:
 
 ```
 http://localhost:4200
 ```
 
-The backend is expected to be running locally at:
+The backend is expected to be available at:
 
 ```
 http://localhost:8080
@@ -77,36 +139,60 @@ http://localhost:8080
 
 ---
 
-## Configuration (WIP)
+## Production build
 
-Currently, backend API URLs are defined directly inside Angular services.
+```bash
+npm run build
+```
 
-Planned improvements:
-- Move API base URL to Angular environment configuration
-- Add support for multiple environments (dev, prod)
-- Improve error and loading UX states
-
----
-
-## Roadmap (Portfolio Goals)
-
-- Align request contracts with backend DTOs
-- Improve pagination and sorting UX
-- Add stronger form validation
-- Add basic component tests
-- Add CI checks (lint + build validation)
-- Improve UI styling for clearer data presentation
+The build output is generated under Angular's `dist/` directory.
 
 ---
 
-## Security Notes
+## AWS Amplify deployment
 
-- No secrets are stored in this repository.
-- All external API credentials are managed by the backend service.
-- The frontend only communicates with the backend API.
+This frontend is deployed with AWS Amplify.
+
+The repository includes an `amplify.yml` file that defines the build used by Amplify:
+
+* use Node 20
+* install dependencies with `npm ci`
+* run the Angular production build
+* publish `dist/api-integration-hub-ui/browser`
+
+This keeps the Amplify build configuration versioned alongside the application.
+
+---
+
+## Security notes
+
+* No third-party API secrets are stored in this repository
+* External API credentials are handled by the backend service
+* The frontend only communicates with the backend API
+
+---
+
+## Roadmap
+
+Planned future additions include:
+
+* additional integrations
+* stronger loading and error UX
+* database-backed features
+* caching and rate-limiting demonstrations
+* more automated tests
+* expanded CI/CD validation
+* further visual polish for the portfolio experience
+
+---
+
+## Related repositories
+
+* Frontend: `api-integration-hub-ui`
+* Backend: `api-integration-hub`
 
 ---
 
 ## License
 
-MIT (or your preferred license)
+MIT
