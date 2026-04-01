@@ -13,6 +13,10 @@ import { ActivatedRoute, Router, RouterLink, RouterLinkActive, RouterOutlet } fr
 export class LayoutComponent {
     constructor(private router: Router, private route: ActivatedRoute) {}
 
+    goToHome() {
+      this.router.navigate([''], {relativeTo: this.route});
+    }
+
     goToGitHub() {
       this.router.navigate(['github'], {relativeTo: this.route});
     }

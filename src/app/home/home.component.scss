@@ -1,0 +1,93 @@
+:host {
+  display: block;
+}
+
+.hero {
+  padding: 32px 0 16px;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  opacity: 0.75;
+}
+
+.hero h1 {
+  margin: 0 0 12px;
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  line-height: 1.1;
+}
+
+.intro {
+  max-width: 760px;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.section {
+  margin-top: 32px;
+}
+
+.section h2 {
+  margin-bottom: 16px;
+}
+
+.section ul {
+    margin-top: 0;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+.diagram-card {
+  overflow-x: auto;
+}
+
+.diagram {
+  display: flex;
+  align-items: stretch;
+  gap: 12px;
+  min-width: 1000px;
+}
+
+.diagram-node {
+  min-width: 180px;
+  padding: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 12px;
+  background: #fafafa;
+}
+
+.diagram-node h3 {
+  margin-top: 0;
+  margin-bottom: 8px;
+}
+
+.diagram-node p {
+  margin: 0;
+}
+
+.diagram-arrow {
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.diagram-note {
+  margin-top: 12px;
+  opacity: 0.8;
+}

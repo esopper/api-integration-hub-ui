@@ -1,0 +1,254 @@
+<section class="hero">
+  <div class="hero-copy">
+    <p class="eyebrow">Portfolio Project</p>
+    <h1>API Integration Hub</h1>
+    <p class="intro">
+      This site is both a working application and my software engineering portfolio.
+      It demonstrates how I structure integration-focused systems, expose clean API-driven
+      UI features, and deploy a full-stack project to AWS.
+    </p>
+
+    <div class="hero-actions">
+      <a mat-raised-button routerLink="/github">
+        <mat-icon>code</mat-icon>
+        Explore GitHub Integration
+      </a>
+
+      <a mat-raised-button routerLink="/weather">
+        <mat-icon>sunny</mat-icon>
+        Explore Weather Integration
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>What this project demonstrates</h2>
+
+  <div class="card-grid">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Angular UI Architecture</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p>
+          Feature-oriented UI structure, typed models, service-based API communication,
+          Angular Material components, and route-based navigation.
+        </p>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Backend Integration Design</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p>
+          The frontend consumes a Spring Boot backend that normalizes external API data,
+          hides third-party credentials, and presents cleaner contracts to the client.
+        </p>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>AWS Hosting</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p>
+          The frontend is deployed with AWS Amplify, and the backend is deployed separately
+          behind its own HTTPS endpoint. The application is structured to reflect real deployment concerns.
+        </p>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Portfolio Growth</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p>
+          This project is intentionally expandable. New integrations and infrastructure features
+          will be added over time to demonstrate additional backend, cloud, and data skills.
+        </p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Current integrations</h2>
+
+  <div class="card-grid">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>GitHub Repository Search</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p>
+          Demonstrates external API integration, request/response modeling,
+          server-backed pagination, sorting, and presenting normalized data in a UI.
+        </p>
+      </mat-card-content>
+      <mat-card-actions>
+        <a mat-button routerLink="/github">Open</a>
+      </mat-card-actions>
+    </mat-card>
+
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Weather Lookup</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p>
+          Demonstrates backend-mediated third-party API access, location lookup,
+          and transforming weather data into a clear user-facing view.
+        </p>
+      </mat-card-content>
+      <mat-card-actions>
+        <a mat-button routerLink="/weather">Open</a>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Hosting overview</h2>
+
+  <mat-card class="diagram-card">
+    <mat-card-content>
+      <div class="diagram">
+        <div class="diagram-node">
+          <h3>User Browser</h3>
+          <p>Visits eriksopper.com</p>
+        </div>
+
+        <div class="diagram-arrow">→</div>
+
+        <div class="diagram-node">
+          <h3>AWS Amplify</h3>
+          <p>Hosts Angular frontend</p>
+        </div>
+
+        <div class="diagram-arrow">→</div>
+
+        <div class="diagram-node">
+          <h3>api.eriksopper.com</h3>
+          <p>HTTPS backend endpoint</p>
+        </div>
+
+        <div class="diagram-arrow">→</div>
+
+        <div class="diagram-node">
+          <h3>Spring Boot API</h3>
+          <p>Aggregates and normalizes external APIs</p>
+        </div>
+
+        <div class="diagram-arrow">→</div>
+
+        <div class="diagram-node">
+          <h3>External Services</h3>
+          <p>GitHub, OpenWeather, and future integrations</p>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</section>
+
+<section class="section">
+  <h2>AWS deployment details</h2>
+  <p class="section-intro">
+    Beyond the frontend hosting layer, this project also demonstrates how I deploy
+    and configure a backend service in AWS using managed infrastructure, HTTPS,
+    domain routing, and secure configuration practices.
+  </p>
+
+  <div class="card-grid">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Route 53</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p>
+          Routes traffic for my custom domain and subdomains, including the frontend
+          site and backend API endpoint.
+        </p>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>AWS Amplify</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p>
+          Hosts and deploys the Angular frontend from source control as the public-facing
+          portfolio experience.
+        </p>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>ACM + HTTPS</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p>
+          Uses AWS Certificate Manager to support HTTPS for the backend domain and
+          demonstrate secure production-style traffic handling.
+        </p>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Elastic Beanstalk + EC2</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p>
+          Deploys the Spring Boot backend through Elastic Beanstalk, with the application
+          running on underlying EC2 infrastructure managed by the platform.
+        </p>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Load Balancer</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p>
+          Uses an Application Load Balancer to terminate TLS and route requests to the
+          backend service.
+        </p>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Secrets and Configuration</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p>
+          Keeps sensitive backend configuration out of the frontend and out of source control,
+          reflecting secure environment-based deployment practices.
+        </p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Planned additions</h2>
+  <mat-card>
+    <mat-card-content>
+      <ul>
+        <li>Additional integrations to demonstrate broader API orchestration</li>
+        <li>Database-backed features to show relational design and persistence</li>
+        <li>Caching and rate-limiting patterns</li>
+        <li>Expanded testing and CI/CD validation</li>
+        <li>Continued UI polish and portfolio storytelling</li>
+      </ul>
+    </mat-card-content>
+  </mat-card>
+</section>
