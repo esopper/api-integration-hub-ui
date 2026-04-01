@@ -9,9 +9,9 @@ export const routes: Routes = [
         path: '',
         component: LayoutComponent,
         children: [
-            { path: '', component: HomeComponent },
-            { path: 'github', component: Github },
-            { path: 'weather', component: Weather }
+            { path: '', component: HomeComponent, title: 'API Integration Hub' },
+            { path: 'github', component: Github, title: 'GitHub | API Integration Hub' },
+            { path: 'weather', component: Weather, title: 'Weather | API Integration Hub' }
         ]
     }
 ];
