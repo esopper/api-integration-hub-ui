@@ -1,0 +1,73 @@
+canvas {
+    cursor: default;
+    outline: none;
+    user-select: none;
+    touch-action: none;
+}
+
+body {
+    background-color: #222222;
+}
+
+.superdev {
+    color: rgb(37,37,37);
+    text-shadow: 0px 1px 1px rgba(250,250,250,0.1);
+    font-size: 50pt;
+    display: block;
+    position: relative;
+    text-decoration: none;
+    background-color: rgb(83,87,93);
+    box-shadow: 0px 3px 0px 0px rgb(34,34,34),
+                0px 7px 10px 0px rgb(17,17,17),
+                inset 0px 1px 1px 0px rgba(250, 250, 250, .2),
+                inset 0px -12px 35px 0px rgba(0, 0, 0, .5);
+    width: 70px;
+    height: 70px;
+    border: 0;
+    border-radius: 35px;
+    text-align: center;
+    line-height: 68px;
+}
+
+.superdev:active {
+    box-shadow: 0px 0px 0px 0px rgb(34,34,34),
+                0px 3px 7px 0px rgb(17,17,17),
+                inset 0px 1px 1px 0px rgba(250, 250, 250, .2),
+                inset 0px -10px 35px 5px rgba(0, 0, 0, .5);
+    background-color: rgb(83,87,93);
+    top: 3px;
+    color: #fff;
+    text-shadow: 0px 0px 3px rgb(250,250,250);
+}
+
+.superdev:hover {
+    background-color: rgb(100,100,100);
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background: black;
+  height: 100%;
+}
+
+#embed-html {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* GWT adds a loading element before the canvas inside #embed-html, which
+   offsets the canvas downward even after loading. Positioning it absolutely
+   to the top pins it regardless of sibling elements or inline styles GWT sets.
+   Height 270px (instead of the hard-coded 320px buffer) cancels out the
+   vertical stretch from the game camera being 480x270 in a 480x320 canvas. */
+#embed-html canvas {
+  display: block !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 480px !important;
+  height: 270px !important;
+}

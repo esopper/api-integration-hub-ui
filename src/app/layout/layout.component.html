@@ -1,14 +1,25 @@
 <header>
     <nav>
         <mat-toolbar class="toolbar">
-            <button matButton (click)="goToHome()">
-                <mat-icon>home</mat-icon>Home
+            <button matButton (click)="goToPortfolio()">
+                <mat-icon>home</mat-icon>Portfolio
             </button>
-            <button matButton (click)="goToGitHub()">
-                <mat-icon>code</mat-icon>GitHub
+            <button matButton [matMenuTriggerFor]="hubMenu">
+                <mat-icon>hub</mat-icon>API Hub
             </button>
-            <button matButton (click)="goToWeather()">
-                <mat-icon>sunny</mat-icon>Weather
+            <mat-menu #hubMenu="matMenu">
+                <button mat-menu-item (click)="goToHub()">
+                    <mat-icon>dashboard</mat-icon>Overview
+                </button>
+                <button mat-menu-item (click)="goToGitHub()">
+                    <mat-icon>code</mat-icon>GitHub
+                </button>
+                <button mat-menu-item (click)="goToWeather()">
+                    <mat-icon>sunny</mat-icon>Weather
+                </button>
+            </mat-menu>
+            <button matButton (click)="goToCaribouCrossing()">
+                <mat-icon>videogame_asset</mat-icon>Caribou Crossing
             </button>
             <span class="spacer"></span>
             <button matButton (click)="goToSource()">

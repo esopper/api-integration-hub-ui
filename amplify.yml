@@ -9,7 +9,7 @@ frontend:
       commands:
         - npm run build
   artifacts:
-    baseDirectory: dist/api-integration-hub-ui/browser
+    baseDirectory: dist/portfolio/browser
     files:
       - '**/*'
   cache:

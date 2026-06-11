@@ -6,9 +6,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
 
 @Component({
-  selector: 'app-home',
+  selector: 'app-hub',
   imports: [CommonModule, MatCardModule, MatButtonModule, MatIconModule, RouterLink],
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.scss'
+  templateUrl: './hub.component.html',
+  styleUrl: './hub.component.scss'
 })
-export class HomeComponent {}
+export class HubComponent {}

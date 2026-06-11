@@ -1,0 +1,32 @@
+<div class="game-header">
+  <h1>Caribou Crossing</h1>
+  <p>
+    Tap or click the <strong>left edge</strong> of the game to move the caribou left,
+    the <strong>right edge</strong> to move right, and the <strong>middle</strong> to jump forward.
+    Arrow keys work the same way.
+  </p>
+</div>
+
+<p class="legacy-note">
+  A Frogger-inspired endless runner originally developed in 2014–2015 using libGDX and Java.
+  The game shipped on Android and was available on the Google Play Store before being retired.
+  This is a legacy portfolio piece — the HTML5 build runs here via GWT compilation of the original Java source.
+  The leaderboard and achievement buttons connected to Google Play Games in the original release;
+  those features are not active in this browser build.
+</p>
+
+<div class="game-container">
+  <iframe
+    #gameFrame
+    class="game-frame"
+    [src]="gameUrl"
+    title="Caribou Crossing game"
+    allowfullscreen
+  ></iframe>
+
+  @if (!activated) {
+    <div class="game-overlay" (click)="activate()">
+      <span class="play-prompt">▶&nbsp;&nbsp;Click to play</span>
+    </div>
+  }
+</div>

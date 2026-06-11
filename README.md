@@ -1,17 +1,18 @@
-# API Integration Hub UI
+# Portfolio
 
-Angular frontend for my API Integration Hub portfolio project.
+Erik Sopper's software engineering portfolio, hosted at `eriksopper.com`.
 
-This application serves two purposes:
-
-1. It is a working client for integration-focused backend features.
-2. It is Erik Sopper's public portfolio site itself at `eriksopper.com`.
-
-The goal is to demonstrate practical frontend engineering, clean integration with a backend aggregation service, and real deployment decisions in AWS.
+This repository is the Angular frontend for the portfolio site. It hosts multiple projects as distinct sections of a single deployed application.
 
 ---
 
-## What this project demonstrates
+## Projects
+
+### API Integration Hub
+
+A working full-stack integration project. The frontend consumes a Spring Boot backend that normalizes external API data, hides third-party credentials, and presents clean contracts to the client.
+
+Demonstrates:
 
 * Angular application structure organized around features, services, and models
 * Typed communication with a backend API
@@ -20,20 +21,13 @@ The goal is to demonstrate practical frontend engineering, clean integration wit
 * Environment-based configuration for local and deployed targets
 * AWS-hosted frontend deployment through Amplify
 
----
+#### Features
 
-## Current features
+**Hub Overview**
 
-### Home / Portfolio Splash Page
+A section landing page that explains what the project is, what it currently demonstrates, and how it is hosted.
 
-A landing page that explains:
-
-* what the project is
-* what it currently demonstrates
-* how it is hosted
-* where the project is heading next
-
-### GitHub Repository Search
+**GitHub Repository Search**
 
 Demonstrates:
 
@@ -42,13 +36,21 @@ Demonstrates:
 * pagination and sorting flows
 * normalized response handling
 
-### Weather Lookup
+**Weather Lookup**
 
 Demonstrates:
 
 * backend-mediated third-party API access
 * location lookup and weather retrieval
 * presenting structured forecast data in the UI
+
+---
+
+### Caribou Crossing
+
+A Frogger-inspired endless runner originally developed in 2014–2015 using libGDX and Java. Shipped on Android and available on the Google Play Store before being retired. Published here as a legacy portfolio piece — the HTML5 build runs in the browser via GWT compilation of the original Java source.
+
+See the [CaribouCrossing repository](https://github.com/esopper/CaribouCrossing) for full source and documentation.
 
 ---
 
@@ -67,12 +69,15 @@ Demonstrates:
 ## Project structure
 
 * `src/app/layout` — shared application layout and top navigation
-* `src/app/home` — portfolio landing page
+* `src/app/portfolio-home` — portfolio landing page
+* `src/app/hub` — API Integration Hub section overview
 * `src/app/github` — GitHub integration UI
 * `src/app/weather` — weather integration UI
+* `src/app/caribou-crossing` — Caribou Crossing game embed
 * `src/app/services` — backend API communication
 * `src/app/models` — typed request/response models
 * `src/environments` — environment-specific configuration
+* `public/caribou-crossing-game` — compiled HTML5 game assets
 
 ---
 
@@ -158,7 +163,7 @@ The repository includes an `amplify.yml` file that defines the build used by Amp
 * use Node 20
 * install dependencies with `npm ci`
 * run the Angular production build
-* publish `dist/api-integration-hub-ui/browser`
+* publish `dist/portfolio/browser`
 
 This keeps the Amplify build configuration versioned alongside the application.
 
@@ -182,14 +187,15 @@ Planned future additions include:
 * caching and rate-limiting demonstrations
 * more automated tests
 * expanded CI/CD validation
-* further visual polish for the portfolio experience
+* further visual polish
 
 ---
 
 ## Related repositories
 
-* Frontend: `api-integration-hub-ui`
-* Backend: `api-integration-hub`
+* Portfolio frontend: `portfolio` (this repository)
+* API Integration Hub backend: `api-integration-hub`
+* Caribou Crossing game: `CaribouCrossing`
 
 ---
 
